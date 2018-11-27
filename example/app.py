@@ -7,6 +7,7 @@ import falcon
 from falcon_openapi import OpenApiRouter
 
 # load from file
-application = app = falcon.API(
-    router=OpenApiRouter(file_path='openapi-spec.yaml')
-)
+openapi_router = OpenApiRouter(file_path='openapi-spec.yaml')
+
+# gunicorn requires the global be named 'application'
+application = falcon.API(router=openapi_router)
