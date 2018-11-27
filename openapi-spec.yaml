@@ -1,0 +1,26 @@
+---
+info:
+  version: 0.0.0
+  title: Example
+  license:
+    name: MIT
+servers:
+  - url: http://localhost/example/v1
+paths:
+    "/health":
+        get:
+            summary: A simple health check.
+            responses:
+                200:
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    name: string
+                                    version: string
+                                    git_hash: string
+            x-falcon:
+                module: controllers.health
+                class: HealthCheck
+                method: on_get
